@@ -1,0 +1,14 @@
+{
+  "node": {
+    "308e5a29a900f7db9d0498edbe830973621407d3": {
+      "workers": {
+        "app/auth/signin/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5Cwebstrom%5C%5CNextjs%5C%5CProjects%5C%5Cassesment%5C%5Curl%20shortener%5C%5Cfrontend%5C%5Csrc%5C%5Capp%5C%5Cauth%5C%5Csignin%5C%5Caction.js%22%2C%5B%22handleSign%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/auth/signin/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "yZv9ZNa2OfYqCUM66VWZG03hdRPav79Z5/g8zPk0Fqw="
+}
