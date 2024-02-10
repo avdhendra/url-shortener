@@ -47,6 +47,7 @@ function DashboardComponent({ token }) {
     const [editUrlData, setEditUrlData] = useState({});
     const [shortCode, setShortCode] = useState("")
     const [urlData, setUrlData] = useState([])
+    const host="https://url-shortener-ychf.onrender.com"
     
     useEffect(() => {
         const getValue = async () => {
@@ -67,7 +68,7 @@ function DashboardComponent({ token }) {
                 url: value
             }
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}url/`, {
+                const response = await fetch(`${host}url/`, {
                     method: "POST",
 
                     headers: {
@@ -122,7 +123,7 @@ function DashboardComponent({ token }) {
                 }
                 try {
                   
-                    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/url/updateurl/${editUrlData.urlId}`, {
+                    const response = await fetch(`${host}/url/updateurl/${editUrlData.urlId}`, {
                         method: "PUT",
 
                         headers: {
@@ -200,7 +201,7 @@ function DashboardComponent({ token }) {
     ) => {
         return {
             ...data,
-            urlCode: `${process.env.NEXT_PUBLIC_HOST}/url/${data.shortUrl}`,
+            urlCode: `${host}/url/${data.shortUrl}`,
             createdAt: data.createdAt,
             actions: renderActions(data, setEditUrlData, setIsEditDialogOpen),
         };
@@ -220,7 +221,7 @@ function DashboardComponent({ token }) {
                 //urlStore.deleteUrl(data.urlCode);
 
                 try {
-                    let response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/url/deleteurl/${data.urlId}`, {
+                    let response = await fetch(`${host}/url/deleteurl/${data.urlId}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",

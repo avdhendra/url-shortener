@@ -8,9 +8,9 @@ export async function removeToken() {
 
 export async function getUrl(token) {
   
+  const host="https://url-shortener-ychf.onrender.com"
   
-  
-    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/url/geturl`,
+    const res = await fetch(`${host}/url/geturl`,
       {
         cache:"no-store", headers: {
         Authorization: `Bearer ${token.token}`,
