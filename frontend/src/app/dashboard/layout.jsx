@@ -1,4 +1,4 @@
-import Appbar from '@/components/Appbar/Appbar'
+import Appbar from '@/app/components/Appbar/Appbar'
 import React from 'react'
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
@@ -9,11 +9,12 @@ const encryptedToken = cookies().get('token')?.value
   
   if (!token) {
      redirect("/auth/signin")
-   }
+  }
 
+  
     return (
         <div>
-        <Appbar/>
+        <Appbar  />
       {children}      
       </div>
       

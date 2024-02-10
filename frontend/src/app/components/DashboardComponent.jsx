@@ -1,13 +1,13 @@
 "use client"
 
-import Button from '@/components/Button/Button'
-import UrlInput from '@/components/TextInput/UrlInput'
-import UrlTable from '@/components/UrlTable/UrlTable'
+import Button from '@/app/components/Button/Button'
+import UrlInput from '@/app/components/TextInput/UrlInput'
+import UrlTable from '@/app/components/UrlTable/UrlTable'
 import Modal from "react-modal";
 import React, { useEffect, useRef, useState } from 'react'
-import TextInput from '@/components/TextInput/TextInput';
+import TextInput from '@/app/components/TextInput/TextInput';
 import validator from 'validator'
-import CopyClipboard from '@/components/CopyClipboard/CopyClipboard';
+import CopyClipboard from '@/app/components/CopyClipboard/CopyClipboard';
 import toast from "react-hot-toast"
 import { Formik, Form } from 'formik';
 import * as yup from "yup"
@@ -45,8 +45,8 @@ function DashboardComponent({ url,token }) {
     const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
     const [editUrlData, setEditUrlData] = useState({});
     const [shortCode, setShortCode] = useState("")
-    const [urlData, setUrlData] = useState([url])
-    
+    const [urlData, setUrlData] = useState([])
+    console.log("url",url)
     useEffect(() => {
         setUrlData(url)
     }, [url])
@@ -62,7 +62,7 @@ function DashboardComponent({ url,token }) {
                 url: value
             }
             try {
-                const response = await fetch("http://localhost:3000/url/", {
+                const response = await fetch("http://localhost:5000/url/", {
                     method: "POST",
 
                     headers: {
@@ -117,7 +117,7 @@ function DashboardComponent({ url,token }) {
                 }
                 try {
                   
-                    const response = await fetch(`http://localhost:3000/url/updateurl/${editUrlData.urlId}`, {
+                    const response = await fetch(`http://localhost:5000/url/updateurl/${editUrlData.urlId}`, {
                         method: "PUT",
 
                         headers: {
@@ -183,40 +183,7 @@ function DashboardComponent({ url,token }) {
                     }
 
                 </Formik>
-                {/* <label className='text-lg'>Redirect Link</label>
-                <input
-                    
-                    className='w-full text-xl border border-b-2'
-                    label="Original Url"
-                    placeholder="https://google.com/test/12"
-                    value={editUrlData.redirectUrl}
-                    ref={urlRef}
-                    onChange={(e) =>
-                        setEditUrlData({
-                            ...editUrlData,
-                            redirectUrl: e.target.value,
-                        })}
-                   
-                />
-
-                <div
-
-                    className='mt-5 '
-                >
-                    <Button
-                        label="Update"
-                        style="bg-blue-400 rounded-lg w-full mb-2 text-xl"
-                        onClick={handleUpdateUrl}
-
-
-                    />
-                    <Button
-                        style="bg-red-400 rounded-lg w-full text-xl"
-                        label="Cancel"
-                        onClick={onCancel}
-
-                    />
-                </div> */}
+             
             </Modal>
         );
     }
@@ -228,7 +195,7 @@ function DashboardComponent({ url,token }) {
     ) => {
         return {
             ...data,
-            urlCode: `http://localhost:3000/url/${data.shortUrl}`,
+            urlCode: `http://localhost:5000/url/${data.shortUrl}`,
             createdAt: data.createdAt,
             actions: renderActions(data, setEditUrlData, setIsEditDialogOpen),
         };
@@ -241,13 +208,14 @@ function DashboardComponent({ url,token }) {
     ) => {
 
         const handleDeleteUrl = async () => {
+            console.log("hi")
             if (
                 window.confirm(`Are you sure you want to delete: ${data.redirectUrl}?`)
             ) {
                 //urlStore.deleteUrl(data.urlCode);
 
                 try {
-                    let response = await fetch(`http://localhost:3000/url/deleteurl/${data.urlId}`, {
+                    let response = await fetch(`http://localhost:5000/url/deleteurl/${data.urlId}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
@@ -255,7 +223,7 @@ function DashboardComponent({ url,token }) {
 
                         }
                     })
-                    response = response.json()
+                    response = await response.json()
                     console.log("response: " + response)
                     setUrlData(response.data)
                 } catch (error) {

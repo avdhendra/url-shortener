@@ -15,7 +15,7 @@ const app = express();
 app.use(cors({
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
-    origin: ['http://localhost:3001']
+    origin: ['http://localhost:3000']
 }));
 app.use(morgan("combined"))
 app.use(express.json())

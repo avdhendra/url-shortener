@@ -2,10 +2,10 @@
 import React, { useRef,useState } from 'react'
 import * as yup from "yup"
 import Link from 'next/link'
-import TextInput from '@/components/TextInput/TextInput';
+import TextInput from '@/app/components/TextInput/TextInput';
 import toast from "react-hot-toast"
 import { Formik,Form } from 'formik';
-import Button from '@/components/Button/Button';
+import Button from '@/app/components/Button/Button';
 
 const Signup = () => {
     const formikRef = useRef()

@@ -21,12 +21,12 @@ export const handleGenerateNewShortURL = async (req, res) => {
         } else {
             let longurl = await Url.findOne({ where: { redirectUrl: url } })
             if (longurl) {
-                const shortUrl = baseurl + "/" + longurl.shortUrl
+                const shortUrl = baseurl + "/url/" + longurl.shortUrl
                 return res.json(shortUrl)
             } else {
                 console.log("hia")
                 const { shortCode } = genRandomShortcode()
-                const shortURL = baseurl + "/" + shortCode
+                const shortURL = baseurl + "/url/" + shortCode
                 try {
                     await Url.create({
                         shortUrl: shortCode,
@@ -54,7 +54,9 @@ export const handleGenerateNewShortURL = async (req, res) => {
 
 export const RedirectToOriginalLink = async (req, res) => {
     try {
+        
         const { id } = req.params
+        console.log("id",id)
         let result = await Url.findOne({ where: { shortUrl: id } })
         if (!result) {
             return res.status(404).json({ error: "Short url does not exist" })
@@ -138,7 +140,6 @@ console.log("handleDeleteUrl")
         console.log("error", error)
         return res.status(500).json({ error: "Internal Server Error" })
     }
-
 
 }
 
