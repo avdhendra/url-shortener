@@ -11,6 +11,7 @@ import CopyClipboard from '@/app/components/CopyClipboard/CopyClipboard';
 import toast from "react-hot-toast"
 import { Formik, Form } from 'formik';
 import * as yup from "yup"
+import { getUrl } from '../dashboard/action';
 
 const tableColumn = [
     { label: "Redirect link", field: "redirectUrl" },
@@ -39,17 +40,21 @@ const modalStyle = {
 
 
 
-function DashboardComponent({ url,token }) {
+function DashboardComponent({ token }) {
     const urlRef = useRef()
-    const updateRef = useRef()
+   
     const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
     const [editUrlData, setEditUrlData] = useState({});
     const [shortCode, setShortCode] = useState("")
     const [urlData, setUrlData] = useState([])
-    console.log("url",url)
+    
     useEffect(() => {
-        setUrlData(url)
-    }, [url])
+        const getValue = async () => {
+            const url = await getUrl(token)
+                setUrlData(url)    
+        }
+        getValue()
+    }, [shortCode])
     console.log("editUrlData", editUrlData)
     const handleSubmitUrl = async () => {
         const value = urlRef.current.value

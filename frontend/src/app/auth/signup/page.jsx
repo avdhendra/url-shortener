@@ -32,7 +32,7 @@ const Signup = () => {
     console.log("body", body)
     try {
     
-      const result =await fetch("http://localhost:3000/auth/register", {
+      const result =await fetch("http://localhost:5000/auth/register", {
                     method: "POST",
 
                     headers: {
@@ -78,7 +78,7 @@ const Signup = () => {
                         <TextInput type="text" name="name" label="Name" />
               <TextInput type="email" name="email" label="Email" />
               <TextInput type="password" name="password" label="Password" />
-              <Button label={"SignUpn"} style={"bg-blue-500 p-2 text-white rounded-lg min-w-36"} onClick={()=>handleSignUp(formikProps.values)}/>
+              <Button label={"SignUp"} style={"bg-blue-500 p-2 text-white rounded-lg min-w-36"} onClick={()=>handleSignUp(formikProps.values)}/>
             </Form>
  
             <p>Already have account ?<Link className="text-blue-500 underline"href={"/auth/signin"}>SignIn</Link></p>
