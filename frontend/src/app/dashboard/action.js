@@ -10,7 +10,7 @@ export async function getUrl(token) {
   
   
   
-    const res = await fetch(`${process.env.NEXT_HOST}/url/geturl`,
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/url/geturl`,
       {
         cache:"no-store", headers: {
         Authorization: `Bearer ${token.token}`,

@@ -588,12 +588,6 @@ video {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
-.mb-4 {
-  margin-bottom: 1rem;
-}
-.mr-2 {
-  margin-right: 0.5rem;
-}
 .mt-20 {
   margin-top: 5rem;
 }
@@ -655,9 +649,6 @@ video {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-}
-.resize {
-  resize: both;
 }
 .flex-row {
   flex-direction: row;

@@ -67,7 +67,7 @@ function DashboardComponent({ token }) {
                 url: value
             }
             try {
-                const response = await fetch(`${process.env.NEXT_HOST}url/`, {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}url/`, {
                     method: "POST",
 
                     headers: {
@@ -122,7 +122,7 @@ function DashboardComponent({ token }) {
                 }
                 try {
                   
-                    const response = await fetch(`${process.env.NEXT_HOST}/url/updateurl/${editUrlData.urlId}`, {
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/url/updateurl/${editUrlData.urlId}`, {
                         method: "PUT",
 
                         headers: {
@@ -200,7 +200,7 @@ function DashboardComponent({ token }) {
     ) => {
         return {
             ...data,
-            urlCode: `${process.env.NEXT_HOST}/url/${data.shortUrl}`,
+            urlCode: `${process.env.NEXT_PUBLIC_HOST}/url/${data.shortUrl}`,
             createdAt: data.createdAt,
             actions: renderActions(data, setEditUrlData, setIsEditDialogOpen),
         };
@@ -220,7 +220,7 @@ function DashboardComponent({ token }) {
                 //urlStore.deleteUrl(data.urlCode);
 
                 try {
-                    let response = await fetch(`${process.env.NEXT_HOST}/url/deleteurl/${data.urlId}`, {
+                    let response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/url/deleteurl/${data.urlId}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
