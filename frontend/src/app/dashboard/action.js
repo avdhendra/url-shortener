@@ -7,10 +7,10 @@ export async function removeToken() {
 }
 
 export async function getUrl(token) {
-  console.log("ton was", token)
   
   
-    const res = await fetch("http://localhost:5000/url/geturl",
+  
+    const res = await fetch(`${process.env.NEXT_HOST}/url/geturl`,
       {
         cache:"no-store", headers: {
         Authorization: `Bearer ${token.token}`,

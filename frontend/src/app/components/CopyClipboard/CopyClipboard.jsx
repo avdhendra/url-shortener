@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaClipboard } from "react-icons/fa";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 const CopyClipboard = ({ code }) => {
     
     const handleClick = async() => {
