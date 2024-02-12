@@ -12,11 +12,7 @@ dotenv.config()
 
 const app = express();
 
-app.use(cors({
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    origin: ['http://localhost:3000']
-}));
+app.use(cors());
 app.use(morgan("combined"))
 app.use(express.json())
 app.use(cookieParser())
