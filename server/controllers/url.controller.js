@@ -6,6 +6,7 @@ export const handleGenerateNewShortURL = async (req, res) => {
     const { url } = req.body;
     console.log("url: ", url, req.body);
     const baseurl = process.env.BASE_URL
+    console.log("baseurl: ", baseurl)
     try {
 
         if (!url) {
