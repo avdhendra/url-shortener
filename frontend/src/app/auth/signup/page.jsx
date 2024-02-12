@@ -31,8 +31,8 @@ const Signup = () => {
     }
     console.log("body", body)
     try {
-    
-      const result =await fetch("http://localhost:5000/auth/register", {
+    const host="https://url-shortener-ychf.onrender.com"
+      const result =await fetch(`${host}/auth/register`, {
                     method: "POST",
 
                     headers: {

@@ -3,8 +3,8 @@ import { cookies } from 'next/headers'
 
 export const handleSign = async (body) => {
     try {
-
-        const result = await fetch("http://localhost:5000/auth/login", {
+const host="https://url-shortener-ychf.onrender.com"
+        const result = await fetch(`${host}/auth/login`, {
             method: "POST",
 
             headers: {
