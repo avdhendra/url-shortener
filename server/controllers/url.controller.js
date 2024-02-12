@@ -11,11 +11,11 @@ export const handleGenerateNewShortURL = async (req, res) => {
 
         if (!url) {
             return res.status(400).json({ error: "url is required" })
-        }
-        if (!validUrl.isUri(baseurl)) {
-            console.log("good")
-            return res.status(401).json({ error:'Invalid base url'})
-        }
+         }
+        // if (!validUrl.isUri(baseurl)) {
+        //     console.log("good")
+        //     return res.status(401).json({ error:'Invalid base url'})
+        // }
         if (!validUrl.isUri(url)) {
 
             return res.status(401).json({error:"invalid url"})
