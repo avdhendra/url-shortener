@@ -68,7 +68,7 @@ function DashboardComponent({ token }) {
                 url: value
             }
             try {
-                const response = await fetch(`${host}url/`, {
+                const response = await fetch(`${host}/url/`, {
                     method: "POST",
 
                     headers: {
